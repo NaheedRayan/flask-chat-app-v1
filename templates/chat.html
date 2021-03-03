@@ -28,10 +28,10 @@
     console.log(host)
 
 
-    // const socket = io.connect("http://127.0.0.1:5000");
+    const socket = io.connect("http://127.0.0.1:5000");
     // const socket = io.connect("http://localhost");
     // const socket = io.connect("http://192.168.43.151.5000");
-    const socket = io.connect(host);
+    // const socket = io.connect(host);
 
     socket.on('connect', function () {
         socket.emit('join_room', {
