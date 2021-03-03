@@ -44,4 +44,6 @@ def handle_leave_room_event(data):
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    # socketio.run(app,host = "192.168.43.151" , port= 5000, debug=True )
+    # socketio.run(app,host = "0.0.0.0" , port= 5000, debug=True )
+    socketio.run(app)
