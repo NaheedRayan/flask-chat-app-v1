@@ -3,23 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Chat App</title>
 </head>
 
 <body>
     <h1>Welcome to chat room {{ room }}</h1>
 
+    <!-- This div is given id for appending the incoming messages -->
     <div id="messages"></div>
 
+    <!-- The form is also given an id for stoping its default behaviour-->
     <form id="message_input_form">
         <input type="text" id="message_input" placeholder="Enter your message here">
         <button type="submit">Send</button>
     </form>
+
 </body>
 
 
 
-
+<!-- NO:3 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.min.js"></script>
 
 <script>
@@ -33,6 +37,10 @@
     // const socket = io.connect("http://192.168.43.151.5000");
     // const socket = io.connect(host);
     // var socket = io.connect('http://' + document.domain + ':' + location.port);
+    
+    // NO:3
+    // here it will connect automatically with the server. The above examples can also be used.
+    // after connecting it will call a join room event in the app.py file and sends data.
     var socket = io()
 
 
@@ -42,8 +50,13 @@
             room: "{{ room }}"
         });
 
-        let message_input = document.getElementById('message_input');
 
+        // NO:6
+        // if someone writes something we will receive the message and call the send_message event.
+        let message_input = document.getElementById('message_input');
+        
+        // for stopping the default function of the submit button and emmiting it in
+        // the send_message event
         document.getElementById('message_input_form').onsubmit = function (e) {
             e.preventDefault();
             let message = message_input.value.trim();
@@ -54,11 +67,14 @@
                     message: message
                 })
             }
+            // reseting the input value
             message_input.value = '';
             message_input.focus();
         }
     });
 
+    // NO:9
+    // if the window is closed the leave_room event is called
     window.onbeforeunload = function () {
         socket.emit('leave_room', {
             username: "{{ username }}",
@@ -66,6 +82,20 @@
         })
     };
 
+
+    //NO:5 
+    socket.on('join_room_announcement', function (data) {
+        console.log(data);
+        if (data.username !== "{{ username }}") {
+
+            // creating a new node and appending innerHTML in the 'messages' div
+            const newNode = document.createElement('div');
+            newNode.innerHTML = `<b>${data.username}</b> has joined the room`;
+            document.getElementById('messages').appendChild(newNode);
+        }
+    });
+    
+    // NO:8
     socket.on('receive_message', function (data) {
         console.log(data);
         const newNode = document.createElement('div');
@@ -73,15 +103,8 @@
         document.getElementById('messages').appendChild(newNode);
     });
 
-    socket.on('join_room_announcement', function (data) {
-        console.log(data);
-        if (data.username !== "{{ username }}") {
-            const newNode = document.createElement('div');
-            newNode.innerHTML = `<b>${data.username}</b> has joined the room`;
-            document.getElementById('messages').appendChild(newNode);
-        }
-    });
-
+    
+    // NO:11
     socket.on('leave_room_announcement', function (data) {
         console.log(data);
         const newNode = document.createElement('div');
