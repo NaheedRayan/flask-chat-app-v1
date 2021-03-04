@@ -6,6 +6,13 @@
 
 ![](images/chat.gif)
 
+<br>
+<br>
+
+## Flow of events
+![](images/image03.png)
+
+
 
 ### Entering name and room id
 
@@ -501,6 +508,11 @@ Heroku Log:
 
 Reference
 - https://flask-socketio.readthedocs.io/en/latest/
+- [Polling vs WebSockets vs Socket.IO](https://youtu.be/sUEq35F-ELY)
+- [Basic Chat Application | Chat Application using Flask, Socket.IO & mongoDB (Part-1)](https://youtu.be/uJC8A_7VZOA)
+- ["Deploying Flask App to Heroku - Chat App Part13"](https://youtu.be/FWU_tJqr1Po)
+
+
 
 
 # The End
