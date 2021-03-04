@@ -4,6 +4,18 @@
 
 ## Screenshots
 
+![](images/chat.gif)
+
+
+### Entering name and room id
+
+![](images/image01.png)
+
+### Chatting with friends
+
+![](images/image02.png)
+
+
 
 ## Socket.IO vs WebSocket
 
@@ -451,6 +463,32 @@ zope.interface==5.2.0
 - Select the deployment method as github
 - Connect your github repo account
 - enable the automatic deploy and deploy the app.
+
+Heroku Log:
+```cmd
+
+
+2021-03-03T18:20:03.181821+00:00 app[api]: Release v25 created by user naheed28ray@gmail.com
+
+2021-03-03T18:20:03.181821+00:00 app[api]: Deploy d2fe39d5 by user naheed28ray@gmail.com
+
+2021-03-03T18:20:03.378521+00:00 heroku[web.1]: State changed from down to starting
+
+2021-03-03T18:20:10.209218+00:00 heroku[web.1]: Starting process with command `gunicorn --worker-class eventlet -w 1 app:app`
+
+2021-03-03T18:20:13.000000+00:00 app[api]: Build succeeded
+
+2021-03-03T18:20:15.040638+00:00 app[web.1]: [2021-03-03 18:20:15 +0000] [4] [INFO] Starting gunicorn 20.0.4
+
+2021-03-03T18:20:15.041637+00:00 app[web.1]: [2021-03-03 18:20:15 +0000] [4] [INFO] Listening at: http://0.0.0.0:22462 (4)
+
+2021-03-03T18:20:15.047630+00:00 app[web.1]: [2021-03-03 18:20:15 +0000] [4] [INFO] Using worker: eventlet
+
+2021-03-03T18:20:15.063497+00:00 app[web.1]: [2021-03-03 18:20:15 +0000] [9] [INFO] Booting worker with pid: 9
+
+2021-03-03T18:20:15.516994+00:00 heroku[web.1]: State changed from starting to up
+
+```
 
 
 ## Well done.😎😎👌👊
